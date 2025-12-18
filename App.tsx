@@ -516,7 +516,10 @@ const App = () => {
     <div className={`h-[100dvh] flex flex-col ${t.bg} ${t.font}`}>
       <GlobalStyles />
       <div className={`h-12 border-b ${t.border} ${t.headerBg} flex items-center justify-between px-4 shrink-0`}>
-          <div className="font-bold text-sm text-green-500">Binance Futures Pro</div>
+          <div className="flex items-center gap-2">
+            <div className="font-bold text-sm text-green-500">Binance Futures Pro</div>
+            <a href="https://x.com/0xkillcoin" target="_blank" rel="noreferrer" className="text-xs text-gray-400 hover:text-green-500 transition-colors">@oAdam</a>
+          </div>
           <div className="flex gap-2">
             <button onClick={() => setShowExport(true)} className={`px-2 py-1 text-xs border rounded uppercase flex items-center gap-1 ${t.button}`}>
                 <IconExport className="w-3 h-3" /> Export
@@ -931,7 +934,36 @@ const VirtualTable = ({ data, theme, t, favorites, toggleFav, toggleSpot, spotFi
                                     <div className="flex flex-col items-center w-full overflow-hidden">
                                         <span className="font-bold truncate">{item.symbol}</span>
                                         <div className="flex gap-1 mt-0.5 opacity-60">
-                                            <IconBinance className="w-2.5 h-2.5"/> <IconTradingView className="w-2.5 h-2.5"/> <IconX className="w-2.5 h-2.5"/>
+                                            <a 
+                                                href={`https://www.binance.com/en/futures/${item.symbol}`} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="hover:text-[#FCD535] transition-colors"
+                                                title="Binance Futures"
+                                            >
+                                                <IconBinance className="w-2.5 h-2.5"/>
+                                            </a>
+                                            <a 
+                                                href={`https://www.tradingview.com/chart/?symbol=BINANCE:${item.symbol}.P`} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="hover:text-[#2962FF] transition-colors"
+                                                title="TradingView Chart"
+                                            >
+                                                <IconTradingView className="w-2.5 h-2.5"/>
+                                            </a>
+                                            <a 
+                                                href={`https://twitter.com/search?q=%24${item.norm}`} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="hover:text-[#1DA1F2] transition-colors"
+                                                title="Search on X"
+                                            >
+                                                <IconX className="w-2.5 h-2.5"/>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -950,5 +982,4 @@ const VirtualTable = ({ data, theme, t, favorites, toggleFav, toggleSpot, spotFi
 };
 
 export default App;
-
 
